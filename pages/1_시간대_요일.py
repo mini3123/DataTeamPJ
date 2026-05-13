@@ -75,7 +75,7 @@ hr { border-color: #dde3ee !important; }
 CHART_BASE = dict(
     paper_bgcolor="rgba(0,0,0,0)",
     plot_bgcolor="#f8faff",
-    font=dict(family="Inter, sans-serif", color="#3a4660"),
+    font=dict(family="Inter, sans-serif", color="#1e2a3a"),
 )
 
 @st.cache_data
@@ -241,12 +241,12 @@ with col_time:
         marker_line_width=0,
         text=[f"{int(v):,}" for v in time_sum],
         textposition="outside",
-        textfont=dict(color="#3a4660", size=10, family="Inter"),
+        textfont=dict(color="#1e2a3a", size=10, family="Inter"),
     ))
     fig_time.update_layout(
         **CHART_BASE,
-        xaxis=dict(title="시간대", color="#1e2a3a", tickfont=dict(color="#1e2a3a"), gridcolor="#eef0f6", linecolor="#dde3ee"),
-        yaxis=dict(title="범죄 발생 건수", color="#1e2a3a", tickfont=dict(color="#1e2a3a"), gridcolor="#eef0f6", linecolor="#dde3ee"),
+        xaxis=dict(title="시간대", title_font=dict(color="#111111"), color="#111111", tickfont=dict(color="#111111"), gridcolor="#eef0f6", linecolor="#dde3ee"),
+        yaxis=dict(title="범죄 발생 건수", title_font=dict(color="#111111"), color="#111111", tickfont=dict(color="#111111"), gridcolor="#eef0f6", linecolor="#dde3ee"),
         height=260, margin=dict(t=10, b=10), showlegend=False,
     )
     st.plotly_chart(fig_time, use_container_width=True)
@@ -271,7 +271,7 @@ with col_day:
             radialaxis=dict(color="#1e2a3a", tickfont=dict(color="#1e2a3a"), gridcolor="#dde3ee"),
             angularaxis=dict(color="#1e2a3a", tickfont=dict(color="#1e2a3a")),
         ),
-        font=dict(family="Inter", color="#3a4660"),
+        font=dict(family="Inter", color="#1e2a3a"),
         coloraxis_showscale=False,
         height=340, margin=dict(t=50, b=10),
     )
@@ -292,13 +292,13 @@ with col_top5:
         marker_line_width=0,
         text=top5["건수"].apply(lambda x: f"{int(x):,}"),
         textposition="outside",
-        textfont=dict(color="#3a4660", size=10),
+        textfont=dict(color="#111111", size=10),
     )
     fig_top5.update_layout(
         **CHART_BASE,
         coloraxis_showscale=False,
-        xaxis=dict(title="발생 건수", color="#1e2a3a", tickfont=dict(color="#1e2a3a"), gridcolor="#eef0f6", linecolor="#dde3ee"),
-        yaxis=dict(title="", color="#1e2a3a", tickfont=dict(color="#1e2a3a")),
+        xaxis=dict(title="발생 건수", title_font=dict(color="#111111"), color="#111111", tickfont=dict(color="#111111"), gridcolor="#eef0f6", linecolor="#dde3ee"),
+        yaxis=dict(title="", color="#111111", tickfont=dict(color="#111111")),
         height=320, margin=dict(t=10, b=10),
     )
     st.plotly_chart(fig_top5, use_container_width=True)
@@ -316,7 +316,7 @@ fig_pie = px.pie(
     pie_data, names="범죄대분류", values="건수", hole=0.45,
     color_discrete_sequence=["#0d2461","#1a4db3","#3a6fd8","#6e9ef5","#a8c4f8","#c9a84c","#e8c97a","#9aa0ae"],
 )
-fig_pie.update_layout(**CHART_BASE, legend_font_color="#3a4660", margin=dict(t=20))
+fig_pie.update_layout(**CHART_BASE, legend_font_color="#1e2a3a", margin=dict(t=20))
 fig_pie.update_traces(textfont=dict(color="#ffffff", family="Inter"))
 st.plotly_chart(fig_pie, use_container_width=True)
 st.markdown('</div>', unsafe_allow_html=True)

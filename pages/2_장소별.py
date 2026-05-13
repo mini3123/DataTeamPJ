@@ -68,7 +68,7 @@ hr { border-color: #dde3ee !important; }
 CHART_BASE = dict(
     paper_bgcolor="rgba(0,0,0,0)",
     plot_bgcolor="#f8faff",
-    font=dict(family="Inter, sans-serif", color="#3a4660"),
+    font=dict(family="Inter, sans-serif", color="#1e2a3a"),
 )
 
 @st.cache_data
@@ -191,13 +191,13 @@ fig_grp.update_traces(
     marker_line_width=0,
     text=grp_df["건수"].apply(lambda x: f"{x:,}"),
     textposition="outside",
-    textfont=dict(color="#3a4660", size=11),
+    textfont=dict(color="#111111", size=11),
 )
 fig_grp.update_layout(
     **CHART_BASE,
     coloraxis_showscale=False,
-    xaxis=dict(title="", color="#1e2a3a", tickfont=dict(color="#1e2a3a"), gridcolor="#eef0f6", linecolor="#dde3ee"),
-    yaxis=dict(title="발생 건수", color="#1e2a3a", tickfont=dict(color="#1e2a3a"), gridcolor="#eef0f6", linecolor="#dde3ee"),
+    xaxis=dict(title="", color="#111111", tickfont=dict(color="#111111"), gridcolor="#eef0f6", linecolor="#dde3ee"),
+    yaxis=dict(title="발생 건수", title_font=dict(color="#111111"), color="#111111", tickfont=dict(color="#111111"), gridcolor="#eef0f6", linecolor="#dde3ee"),
     margin=dict(t=10, b=10),
 )
 st.plotly_chart(fig_grp, use_container_width=True)
@@ -219,13 +219,13 @@ with col1:
         marker_line_width=0,
         text=top_n["건수"].apply(lambda x: f"{int(x):,}"),
         textposition="outside",
-        textfont=dict(color="#3a4660", size=10),
+        textfont=dict(color="#111111", size=10),
     )
     fig_bar.update_layout(
         **CHART_BASE,
         coloraxis_showscale=False,
-        xaxis=dict(title="발생 건수", color="#1e2a3a", tickfont=dict(color="#1e2a3a"), gridcolor="#eef0f6", linecolor="#dde3ee"),
-        yaxis=dict(title="", color="#1e2a3a", tickfont=dict(color="#1e2a3a")),
+        xaxis=dict(title="발생 건수", title_font=dict(color="#111111"), color="#111111", tickfont=dict(color="#111111"), gridcolor="#eef0f6", linecolor="#dde3ee"),
+        yaxis=dict(title="", color="#111111", tickfont=dict(color="#111111")),
         height=400, margin=dict(t=10, b=10),
     )
     st.plotly_chart(fig_bar, use_container_width=True)
@@ -244,7 +244,7 @@ with col2:
         place_crime, names="범죄유형", values="건수", hole=0.45,
         color_discrete_sequence=["#0d2461","#1a4db3","#3a6fd8","#6e9ef5","#a8c4f8","#c9a84c","#e8c97a","#9aa0ae"],
     )
-    fig_pie.update_layout(**CHART_BASE, legend_font_color="#3a4660", height=400, margin=dict(t=10))
+    fig_pie.update_layout(**CHART_BASE, legend_font_color="#1e2a3a", height=400, margin=dict(t=10))
     fig_pie.update_traces(textfont=dict(color="#ffffff", family="Inter"))
     st.plotly_chart(fig_pie, use_container_width=True)
     st.markdown('</div>', unsafe_allow_html=True)

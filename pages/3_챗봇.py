@@ -4,7 +4,7 @@ from google import genai
 from google.genai import types
 import os
 import json
-from datetime import datetime, timedelta
+from datetime import datetime, timedelta, timezone
 
 HISTORY_FILE = "chat_history.json"
 
@@ -212,7 +212,6 @@ st.sidebar.markdown("**💡 예시 질문**")
 st.sidebar.markdown("날짜 / 장소 / 시간")
 EXAMPLES = [
     "밤 11시에 편의점에 가도 안전할까요?",
-    "주말 저녁 공원 산책해도 괜찮을까요?",
     "새벽 2시 귀가 시 주의할 점은?",
     "금요일 밤 주점 근처를 지나야 해요",
 ]
@@ -271,7 +270,8 @@ if user_input:
     st.session_state.messages.append({"role": "user", "content": user_input})
 
     crime_data = build_crime_context()
-    now = datetime.now()
+    KST = timezone(timedelta(hours=9))
+    now = datetime.now(KST)
     day_names = ["월요일", "화요일", "수요일", "목요일", "금요일", "토요일", "일요일"]
     tomorrow = now + timedelta(days=1)
     current_datetime = (

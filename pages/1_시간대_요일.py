@@ -2,7 +2,7 @@ import pandas as pd
 import streamlit as st
 import plotly.express as px
 import plotly.graph_objects as go
-from datetime import datetime
+from datetime import datetime, timezone, timedelta
 
 st.set_page_config(
     page_title="시간대 & 요일 범죄 통계 대시보드",
@@ -176,7 +176,8 @@ st.markdown("<br>", unsafe_allow_html=True)
 
 # ── 위험도 게이지 + 시간대 막대
 time_ranges = [0, 3, 6, 9, 12, 15, 18, 21]
-now = datetime.now().hour
+KST = timezone(timedelta(hours=9))
+now = datetime.now(KST).hour
 time_idx = sum(1 for t in time_ranges if now >= t) - 1
 current_crime = int(filtered[TIME_COLM[time_idx]].sum())
 max_crime = int(filtered[TIME_COLM].sum().max())

@@ -125,7 +125,7 @@ col1, col2, col3 = st.columns(3)
 with col1:
     st.markdown("""
     <div class="mod-card">
-        <div class="mod-tag">MODULE 01</div>
+        <div class="mod-tag">CHAPTER 01</div>
         <div class="mod-title">⏰ 시간대 & 요일 분석</div>
         <div class="mod-info">
             · 2024년 경찰청 공공데이터 기준<br>
@@ -140,7 +140,7 @@ with col1:
 with col2:
     st.markdown("""
     <div class="mod-card">
-        <div class="mod-tag">MODULE 02</div>
+        <div class="mod-tag">CHAPTER 02</div>
         <div class="mod-title">📍 장소별 통계 분석</div>
         <div class="mod-info">
             · 2024년 경찰청 공공데이터 기준<br>
@@ -155,7 +155,7 @@ with col2:
 with col3:
     st.markdown("""
     <div class="mod-card">
-        <div class="mod-tag">MODULE 03</div>
+        <div class="mod-tag">CHAPTER 03</div>
         <div class="mod-title">👮 안전이 챗봇</div>
         <div class="mod-info">
             · Gemini AI 기반 안전 상담<br>
